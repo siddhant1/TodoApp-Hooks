@@ -11,8 +11,9 @@ function Todos(params) {
   const [todo, setTodo] = useState("Todo : ");
   const [count, setCount] = useState(0);
   useEffect(() => {
+    console.log("called");
     document.title = `You have added ${count} tasks`;
-  });
+  },[count]);
   const removeTodo = todo => {
     let todosCopy = [...todos];
     todosCopy = todosCopy.filter(t => {
@@ -38,7 +39,7 @@ function Todos(params) {
         <button
           onClick={() => {
             const todoAdd = {
-              id: uuid,
+              id: uuid(),
               text: todo
             };
             let newTodos = [...todos];
